@@ -1,7 +1,8 @@
-# KHALILI UI REMASTER — HANDOFF BRIEF (Attempt 5 → Attempt 6)
+# KHALILI UI REMASTER — HANDOFF BRIEF (Attempt 6 → Attempt 7 — FINAL TASK)
 
 > Read this ENTIRE file before touching any code. It tells you exactly what was already
-> done in attempts 1-5 so you CONTINUE from there — do not redo foundations or done tasks.
+> done in attempts 1-6 so you CONTINUE from there — do not redo foundations or done tasks.
+> **This is the last task.** After Task 7, every page should pass the Definition of Done.
 
 ## What this app is
 Khalili — a **mobile-first** Islamic prayer app (Ionic + React + Tailwind + Capacitor).
@@ -23,60 +24,47 @@ Do not silently move on from an imperfect page — report exactly what remains.
 - □ Verify at 375px mobile (non-negotiable) AND desktop width (secondary).
 
 ## ✅ DONE — Phase 0 foundation (attempt 1)
-1. Theme-aware tokens `brand-teal/mint/sand/gold/accent` in `tailwind.config.js` + CSS vars.
+1. Theme-aware tokens `brand-teal/mint/sand/gold/accent` + CSS vars.
 2. `shadow-soft`, `shadow-primary` added.
-3. `Button.tsx` rewritten to `brand-primary` (fixes white-on-white in dark across 16+ comps).
+3. `Button.tsx` rewritten to `brand-primary`.
 4. `NotificationPermission` z-index `z-50` → `z-[120]`.
 
 ## ✅ DONE — Attempt 2 (Task 1 shell + Task 2 Home)
-5. **Header.tsx** banner `from-brand-forest` → `from-emerald-900`.
-6. **QadaTracker.tsx** semantic token fixes.
-7. App shell + Home verified clean in dark + light.
+5. Header banner dark fix. 6. QadaTracker tokens. 7. Shell + Home verified both themes.
 
 ## ✅ DONE — Attempt 3 (Task 3 Quran)
-8. **QuranReader.tsx**: added missing **default export** (was crashing `React.lazy`).
-9. **QuranReader.tsx**: `group-hover:bg-brand-forest` → `bg-brand-primary` (419/458).
-10. **QuranAudioPlayer.tsx**: `bg-brand-forest` → `bg-brand-primary` (148/201/236).
-11. **QuranReader.tsx**: reflection/notes textarea themed (dark-mode white-on-white fix).
-12. **TafsirModal.tsx**: tab active-pill dark variant.
+8. QuranReader default export (React.lazy crash). 9-10. brand-forest→brand-primary. 11. textarea. 12. TafsirModal pill.
 
 ## ✅ DONE — Attempt 4 (Task 4 Partners)
-13. Dark-mode cleanup across ChallengeCreator, FamilyDetails, TeenChallengeView,
-    DuoDashboard, PartnerConnect, RequestsCenter, SuhbaDashboard.
-14. Intentional hardcoded whites (do NOT "fix"): FamilyDetails.tsx:88 (white button),
-    LostLambMarketplace.tsx:256 (toggle knob), ChallengeCreator.tsx:189 (small label).
+13. Dark cleanup: ChallengeCreator, FamilyDetails, TeenChallengeView, DuoDashboard, PartnerConnect, RequestsCenter, SuhbaDashboard.
 
-## ✅ DONE — Attempt 5 (TASK 5 Stats page COMPLETE)
-15. **AnalyticsPage.tsx**: period-selector track `bg-brand-sand` → added `dark:bg-white/5`
-    (rest already guarded).
-16. **HabitTrackerPage.tsx**: full semantic-token pass (was entirely unguarded) — header,
-    TodayView, CalendarView, DayDetails modal, StatsView, AddHabitModal, TemplatesModal.
-17. **StudySpacePage.tsx**: fixed unguarded `bg-white` cards/modals, `text-neutral-900`
-    contrast bugs, invisible `border-white/10` in light, priority + blue-600 button contrast.
+## ✅ DONE — Attempt 5 (Task 5 Stats)
+14. AnalyticsPage, HabitTrackerPage (full pass), StudySpacePage.
 
-## ⚠️ KNOWN DARK-MODE BUG CLASS — keep scanning
-Hardcoded `bg-neutral-*` / `bg-white` / `text-gray-*` with **no `dark:` variant** → invisible
-text (white-on-white) in dark mode. Fix = replace with semantic tokens (`bg-brand-surface`,
-`bg-brand-subtle`, `text-brand-forest`, `text-brand-muted`, `border-brand-border`), or add
-`dark:` pairs. NOTE: some `bg-white` are intentional when they're a button/knob on a colored
-surface or a fullscreen timer overlay — judge by context, don't blindly replace.
+## ✅ DONE — Attempt 6 (Task 6 Profile) + THE BUILD IS NOW FIXED
+15. **Fixed the 3 build-blocking type errors** (build was broken since before attempt 4):
+    - `DuaPage.tsx` — non-existent `.id` key
+    - `OnboardingFlow.tsx` — `language` not destructured from `useLanguage()`
+    - `NotificationSettings.tsx` — `defaultScope` typed as `SocialScope`
+    **VERIFIED: `npx tsc --noEmit` = 0 errors, `vite build` succeeds.** ✓
+16. Task 6 dark cleanup: ProfilePage, AppearanceSettings, PrayerSettings, HelpSupport,
+    PrivacySettings, DuaPage translation text.
 
-## THE OFFICIAL TASK LIST (work top to bottom, 100% each)
-**TASK 6 — Profile page** (ProfilePage + profile/* settings: AppearanceSettings, EditProfile,
-BadgesSection, HelpSupport, NotificationSettings, PrayerSettings, PrivacySettings).
-⚠️ `bg-neutral-*` refs to fix: **NotificationSettings (31)**, ProfilePage (13), BadgesSection (4),
-PrivacySettings (entire file unguarded). Also check DuaPage (part of profile flow).
-⚠️ **CRITICAL — PRE-EXISTING TYPE ERRORS BLOCK THE BUILD**, all in Task 6 files:
-   `DuaPage`, `OnboardingFlow`, `NotificationSettings`. Find and fix them — the build has
-   been failing since before attempt 4 and these are the culprits. This is HIGH PRIORITY:
-   a clean `tsc` build is part of every page's Definition of Done.
+## THE FINAL TASK — TASK 7 (Modals/sheets + remaining components)
+Work these top to bottom at 100% each. **Verified remaining `bg-white` (unguarded, no `dark:`
+on same line):**
+- **onboarding/OnboardingFlow.tsx — 13 unguarded `bg-white`** (the biggest remaining chunk)
+- **SettingsModal.tsx — 4 unguarded `bg-white`**
+- **PrayerDetailModal.tsx — 1 unguarded `bg-white`**
+- **GuidedTour.tsx — 1 unguarded `bg-white`**
+- ZakatCalculator, LocalisationSettings, BadgeToastProvider, AuthModal, TasbihModal,
+  LocationPicker, SyncIndicator, Analytics, Hero: **already guarded/clean** — verify only.
 
-**TASK 7 — Modals/sheets + remaining components** (PrayerDetailModal, SettingsModal,
-AuthModal, TasbihModal, onboarding/OnboardingFlow, shared/*Modal, LocationPicker,
-GuidedTour, Skeleton, ErrorBoundary, SyncIndicator, Analytics, Hero).
-⚠️ `bg-neutral-*` refs: SettingsModal (whole file unguarded), ZakatCalculator (9),
-LocalisationSettings (1), BadgeToastProvider (1). Also verify BottomNav + remaining
-QuranReader `bg-neutral-*` refs are correct, and QadaTracker travel card in dark.
+Components in scope: PrayerDetailModal, SettingsModal, AuthModal, TasbihModal,
+**onboarding/OnboardingFlow**, shared/*Modal (CreateGroupModal, JoinGroupModal,
+ShareInviteModal, Toast), LocationPicker, GuidedTour, Skeleton, ErrorBoundary,
+SyncIndicator, Analytics, Hero.
+Also verify: QadaTracker travel-mode card in dark; BottomNav; remaining QuranReader `bg-neutral-*`.
 
 ## Useful technical facts
 - **Theme key:** `localStorage` = `khalili_theme` (`light`/`dark`/`auto`, default `auto`).
@@ -90,7 +78,7 @@ QuranReader `bg-neutral-*` refs are correct, and QadaTracker travel card in dark
 - **Lazy-loaded pages can crash silently** if a component lacks a default export — if a route
   renders blank, check `React.lazy` + missing `export default` first.
 - **Preview browser proxy can be flaky** — verify via `curl` on the dev server (200) if the
-  browser won't attach; confirm the build compiles.
+  browser won't attach; confirm the build compiles (`npx tsc --noEmit` should be 0).
 - Dev server is **Vite**; restart after `tailwind.config.js` edits to be safe.
 
 ## Verify workflow (per page, mandatory)
@@ -109,4 +97,5 @@ Remaining if any: <exact list>
 
 ## Final bar
 If a page is only "ok-ish" but not pixel-clean and rhythm-consistent, it's a FAIL — keep
-working. Prove the standard on each page before moving on.
+working. Prove the standard on each page before moving on. This is the LAST task — after
+it, the whole app should pass the Definition of Done.
