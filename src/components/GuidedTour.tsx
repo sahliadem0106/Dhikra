@@ -153,11 +153,11 @@ export const GuidedTour: React.FC<GuidedTourProps> = ({ isOpen, steps, onClose }
       {/* Tooltip Card - Royal Nature Style */}
       {targetRect && (
         <div
-          className="absolute w-[300px] bg-white rounded-2xl p-5 transition-all duration-500 ease-in-out z-[10000] shadow-2xl border border-brand-primary/10"
+          className="absolute w-[300px] bg-brand-surface rounded-2xl p-5 transition-all duration-500 ease-in-out z-[10000] shadow-2xl border border-brand-primary/10"
           style={tooltipStyle}
         >
           {/* Arrow */}
-          <div className={`absolute w-4 h-4 border-8 border-x-transparent ${arrowClass.replace('brand-surface', 'white').replace('border-t-white', 'border-t-white').replace('border-b-white', 'border-b-white')}`} />
+          <div className={`absolute w-4 h-4 border-8 border-x-transparent ${arrowClass.includes('border-t-white') ? 'dark:border-t-neutral-900' : 'dark:border-b-neutral-900'} ${arrowClass}`} />
 
           <div className="flex justify-between items-start mb-3">
             <div className="flex items-center space-x-2 rtl:space-x-reverse">
@@ -171,7 +171,7 @@ export const GuidedTour: React.FC<GuidedTourProps> = ({ isOpen, steps, onClose }
             </button>
           </div>
 
-          <p className="text-xs text-neutral-600 mb-5 leading-relaxed">
+          <p className="text-xs text-neutral-600 dark:text-neutral-300 mb-5 leading-relaxed">
             {step.content}
           </p>
 

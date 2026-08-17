@@ -205,7 +205,7 @@ export const PrayerDetailModal: React.FC<PrayerDetailModalProps> = ({ prayer, is
                           px-4 py-2.5 rounded-full text-xs font-bold border transition-all
                           ${barrier === b.id
                             ? 'bg-red-50 border-red-200 text-red-600 shadow-sm ring-2 ring-red-200/50'
-                            : 'bg-white border-brand-border text-brand-muted hover:border-red-100 hover:text-red-400'}
+                            : 'bg-white dark:bg-black/20 border-brand-border text-brand-muted hover:border-red-100 hover:text-red-400'}
                         `}
                       >
                         {b.label}

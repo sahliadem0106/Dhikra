@@ -95,7 +95,7 @@ export const ShareInviteModal: React.FC<ShareInviteModalProps> = ({
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                className="bg-white rounded-3xl w-full max-w-sm overflow-hidden shadow-2xl"
+                className="bg-white dark:bg-neutral-900 rounded-3xl w-full max-w-sm overflow-hidden shadow-2xl"
             >
                 {/* Header */}
                 <div className="bg-gradient-to-r from-emerald-600 to-emerald-500 p-6 text-white text-center relative">
@@ -117,16 +117,16 @@ export const ShareInviteModal: React.FC<ShareInviteModalProps> = ({
                     {loading ? (
                         <div className="flex flex-col items-center py-8">
                             <Loader2 className="animate-spin text-emerald-600 mb-4" size={32} />
-                            <p className="text-gray-500">{t('generating_invite_link')}</p>
+                            <p className="text-gray-500 dark:text-neutral-400">{t('generating_invite_link')}</p>
                         </div>
                     ) : invite ? (
                         <div className="space-y-4">
                             {/* Link Display */}
-                            <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
-                                <p className="text-xs text-gray-500 uppercase font-bold tracking-wider mb-2">
+                            <div className="bg-gray-50 dark:bg-neutral-800 rounded-xl p-4 border border-gray-100 dark:border-neutral-700">
+                                <p className="text-xs text-gray-500 dark:text-neutral-400 uppercase font-bold tracking-wider mb-2">
                                     {t('invite_link')}
                                 </p>
-                                <p className="text-sm text-gray-800 font-mono break-all">
+                                <p className="text-sm text-gray-800 dark:text-neutral-100 font-mono break-all">
                                     {shareLink}
                                 </p>
                             </div>
@@ -144,7 +144,7 @@ export const ShareInviteModal: React.FC<ShareInviteModalProps> = ({
                             </div>
 
                             {/* Info */}
-                            <p className="text-xs text-gray-400 text-center">
+                            <p className="text-xs text-gray-400 dark:text-neutral-500 text-center">
                                 {t('invite_expires_text')}
                             </p>
 
@@ -152,7 +152,7 @@ export const ShareInviteModal: React.FC<ShareInviteModalProps> = ({
                             <div className="flex gap-3 mt-6">
                                 <button
                                     onClick={handleCopy}
-                                    className="flex-1 py-3 bg-gray-100 text-gray-700 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-gray-200 transition-colors"
+                                    className="flex-1 py-3 bg-gray-100 dark:bg-neutral-800 text-gray-700 dark:text-neutral-200 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-gray-200 dark:hover:bg-neutral-700 transition-colors"
                                 >
                                     {copied ? (
                                         <>
@@ -176,7 +176,7 @@ export const ShareInviteModal: React.FC<ShareInviteModalProps> = ({
                             </div>
                         </div>
                     ) : (
-                        <div className="text-center py-8 text-gray-500">
+                        <div className="text-center py-8 text-gray-500 dark:text-neutral-400">
                             {t('failed_generate_invite')}
                         </div>
                     )}
