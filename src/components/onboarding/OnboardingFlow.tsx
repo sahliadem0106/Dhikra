@@ -353,30 +353,30 @@ export const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete, init
 
     const getStepColor = () => {
         switch (step) {
-            case 0: return 'bg-sky-50 dark:bg-slate-900';
-            case 1: return 'bg-indigo-50 dark:bg-slate-900';
-            case 2: return 'bg-amber-50 dark:bg-slate-900';
-            case 3: return 'bg-blue-50 dark:bg-slate-900';
-            case 4: return 'bg-purple-50 dark:bg-slate-900';
-            case 5: return 'bg-white dark:bg-slate-900'; // Auth
-            case 6: return 'bg-slate-50 dark:bg-slate-900'; // Warning
-            case 7: return 'bg-white dark:bg-slate-900'; // Gender
+            case 0: return 'bg-sky-50';
+            case 1: return 'bg-indigo-50';
+            case 2: return 'bg-amber-50';
+            case 3: return 'bg-blue-50';
+            case 4: return 'bg-purple-50';
+            case 5: return 'bg-white'; // Auth
+            case 6: return 'bg-slate-50'; // Warning
+            case 7: return 'bg-white'; // Gender
             default: // Branching
-                if (!gender) return 'bg-slate-50 dark:bg-slate-900';
-                return gender === 'female' ? 'bg-pink-50 dark:bg-slate-900' : 'bg-cyan-50 dark:bg-slate-900';
+                if (!gender) return 'bg-slate-50';
+                return gender === 'female' ? 'bg-pink-50' : 'bg-cyan-50';
         }
     };
 
     const getAccentColor = () => {
         switch (step) {
-            case 0: return 'text-sky-600 dark:text-sky-300';
-            case 1: return 'text-indigo-700 dark:text-indigo-300';
-            case 2: return 'text-amber-700 dark:text-amber-300';
-            case 3: return 'text-blue-700 dark:text-blue-300';
-            case 4: return 'text-purple-700 dark:text-purple-300';
-            case 5: return 'text-slate-800 dark:text-slate-100';
-            case 6: return 'text-red-600 dark:text-red-300';
-            default: return gender === 'female' ? 'text-pink-600 dark:text-pink-300' : 'text-cyan-700 dark:text-cyan-300';
+            case 0: return 'text-sky-600';
+            case 1: return 'text-indigo-700';
+            case 2: return 'text-amber-700';
+            case 3: return 'text-blue-700';
+            case 4: return 'text-purple-700';
+            case 5: return 'text-slate-800';
+            case 6: return 'text-red-600';
+            default: return gender === 'female' ? 'text-pink-600' : 'text-cyan-700';
         }
     };
 
@@ -499,17 +499,17 @@ export const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete, init
             case 5: // AUTH GATE (New)
                 return (
                     <div className="w-full h-full flex flex-col items-center justify-center text-center px-8">
-                        <SmoothText text={t('onboard_auth_title') as string} className="text-4xl font-bold font-outfit text-slate-800 dark:text-slate-100 mb-4" />
-                        <SmoothText text={t('onboard_auth_sub') as string} className="text-xl text-slate-500 dark:text-slate-400 font-light mb-12 max-w-sm mx-auto" delay={0.3} />
+                        <SmoothText text={t('onboard_auth_title') as string} className="text-4xl font-bold font-outfit text-slate-800 mb-4" />
+                        <SmoothText text={t('onboard_auth_sub') as string} className="text-xl text-slate-500 font-light mb-12 max-w-sm mx-auto" delay={0.3} />
 
                         <div className="w-full max-w-sm space-y-4">
                             <button
                                 onClick={handleGoogleLogin}
                                 disabled={isSigningIn}
-                                className="w-full py-4 rounded-2xl bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 flex items-center justify-center gap-3 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors disabled:opacity-60 disabled:pointer-events-none"
+                                className="w-full py-4 rounded-2xl bg-white border-2 border-slate-100 flex items-center justify-center gap-3 shadow-sm hover:bg-slate-50 transition-colors disabled:opacity-60 disabled:pointer-events-none"
                             >
                                 <img src="https://www.google.com/favicon.ico" alt="Google" className="w-6 h-6" />
-                                <span className="font-bold text-slate-700 dark:text-slate-100">
+                                <span className="font-bold text-slate-700">
                                     {isSigningIn ? (language === 'ar' ? 'جارٍ تسجيل الدخول...' : 'Signing in...') : t('auth_google')}
                                 </span>
                             </button>
@@ -527,7 +527,7 @@ export const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete, init
                         {/* New Ghost Animation */}
                         <FloatingLottie animationData={ghostAnim} className="w-64 h-64 mb-6" delay={0} speed={6} />
 
-                        <SmoothText text={t('onboard_ghost_title') as string} className="text-4xl font-bold font-outfit text-slate-800 dark:text-slate-100 mb-4" />
+                        <SmoothText text={t('onboard_ghost_title') as string} className="text-4xl font-bold font-outfit text-slate-800 mb-4" />
 
                         <div className="bg-amber-50 border border-amber-100 rounded-2xl p-6 mb-10 max-w-sm mx-auto">
                             <p className="text-amber-800 font-medium mb-2">⚠️ {t('onboard_ghost_warning')}</p>
@@ -550,8 +550,8 @@ export const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete, init
             case 7: // GENDER SELECTION (Previously 5)
                 return (
                     <div className="w-full h-full flex flex-col items-center justify-center text-center px-4">
-                        <SmoothText text={t('onboard_bracelet') as string} className="text-4xl font-bold font-outfit text-slate-800 dark:text-slate-100 mb-4" />
-                        <SmoothText text={t('onboard_bracelet_sub') as string} className="text-xl text-slate-500 dark:text-slate-400 font-light mb-12 max-w-xs mx-auto" delay={0.5} />
+                        <SmoothText text={t('onboard_bracelet') as string} className="text-4xl font-bold font-outfit text-slate-800 mb-4" />
+                        <SmoothText text={t('onboard_bracelet_sub') as string} className="text-xl text-slate-500 font-light mb-12 max-w-xs mx-auto" delay={0.5} />
 
                         <div className="flex flex-row gap-6 items-center justify-center">
                             {/* Smaller, safe from borders */}
@@ -578,7 +578,7 @@ export const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete, init
                                     text={t('onboard_hi_sister') as string}
                                     className="text-3xl font-bold text-pink-600 mb-6"
                                 />
-                                <p className="text-slate-500 dark:text-slate-400 mb-8">{t('onboard_hi_sister_sub')}</p>
+                                <p className="text-slate-500 mb-8">{t('onboard_hi_sister_sub')}</p>
                             </>
                         ) : (
                             <>
@@ -587,7 +587,7 @@ export const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete, init
                                     text={t('onboard_hi_brother') as string}
                                     className="text-3xl font-bold text-cyan-700 mb-6"
                                 />
-                                <p className="text-slate-500 dark:text-slate-400 mb-8">{t('onboard_hi_brother_sub')}</p>
+                                <p className="text-slate-500 mb-8">{t('onboard_hi_brother_sub')}</p>
                             </>
                         )}
 
@@ -608,12 +608,12 @@ export const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete, init
 
                         <div className="w-full space-y-6 pb-8">
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <input placeholder={t('onboard_first_name') as string} value={formData.firstName} onChange={e => setFormData({ ...formData, firstName: e.target.value })} className="bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 rounded-2xl p-4 outline-none focus:border-current transition-colors shadow-sm" style={{ borderColor: gender === 'female' ? '#fce7f3' : '#cffafe' }} />
-                                <input placeholder={t('onboard_last_name') as string} value={formData.lastName} onChange={e => setFormData({ ...formData, lastName: e.target.value })} className="bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 rounded-2xl p-4 outline-none focus:border-current transition-colors shadow-sm" style={{ borderColor: gender === 'female' ? '#fce7f3' : '#cffafe' }} />
+                                <input placeholder={t('onboard_first_name') as string} value={formData.firstName} onChange={e => setFormData({ ...formData, firstName: e.target.value })} className="bg-white border-2 border-slate-100 text-slate-800 placeholder-slate-400 rounded-2xl p-4 outline-none focus:border-current transition-colors shadow-sm" style={{ borderColor: gender === 'female' ? '#fce7f3' : '#cffafe' }} />
+                                <input placeholder={t('onboard_last_name') as string} value={formData.lastName} onChange={e => setFormData({ ...formData, lastName: e.target.value })} className="bg-white border-2 border-slate-100 text-slate-800 placeholder-slate-400 rounded-2xl p-4 outline-none focus:border-current transition-colors shadow-sm" style={{ borderColor: gender === 'female' ? '#fce7f3' : '#cffafe' }} />
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <input type="number" min={5} max={120} placeholder={t('onboard_age') as string} value={formData.age} onChange={e => { const val = parseInt(e.target.value) || 0; setFormData({ ...formData, age: Math.min(120, Math.max(0, val)) }); }} className="bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 rounded-2xl p-4 outline-none focus:border-current transition-colors shadow-sm" style={{ borderColor: gender === 'female' ? '#fce7f3' : '#cffafe' }} />
-                                <input placeholder={t('onboard_nickname') as string} value={formData.nickname} onChange={e => setFormData({ ...formData, nickname: e.target.value })} className="bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 rounded-2xl p-4 outline-none focus:border-current transition-colors shadow-sm" style={{ borderColor: gender === 'female' ? '#fce7f3' : '#cffafe' }} />
+                                <input type="number" min={5} max={120} placeholder={t('onboard_age') as string} value={formData.age} onChange={e => { const val = parseInt(e.target.value) || 0; setFormData({ ...formData, age: Math.min(120, Math.max(0, val)) }); }} className="bg-white border-2 border-slate-100 text-slate-800 placeholder-slate-400 rounded-2xl p-4 outline-none focus:border-current transition-colors shadow-sm" style={{ borderColor: gender === 'female' ? '#fce7f3' : '#cffafe' }} />
+                                <input placeholder={t('onboard_nickname') as string} value={formData.nickname} onChange={e => setFormData({ ...formData, nickname: e.target.value })} className="bg-white border-2 border-slate-100 text-slate-800 placeholder-slate-400 rounded-2xl p-4 outline-none focus:border-current transition-colors shadow-sm" style={{ borderColor: gender === 'female' ? '#fce7f3' : '#cffafe' }} />
                             </div>
 
                             {/* Hobbies - Restored */}
@@ -624,28 +624,28 @@ export const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete, init
                                         value={hobbyInput}
                                         onChange={e => setHobbyInput(e.target.value)}
                                         onKeyDown={e => e.key === 'Enter' && addHobby()}
-                                        className="flex-1 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 rounded-2xl p-4 outline-none focus:border-current shadow-sm"
+                                        className="flex-1 bg-white border-2 border-slate-100 text-slate-800 placeholder-slate-400 rounded-2xl p-4 outline-none focus:border-current shadow-sm"
                                         style={{ borderColor: gender === 'female' ? '#fce7f3' : '#cffafe' }}
                                     />
                                     <button onClick={addHobby} className={`w-14 h-14 flex-shrink-0 rounded-2xl font-bold text-white text-2xl flex items-center justify-center transition-colors ${gender === 'female' ? 'bg-pink-400 hover:bg-pink-500' : 'bg-cyan-500 hover:bg-cyan-600'}`}>+</button>
                                 </div>
                                 <div className="flex flex-wrap gap-2">
                                     {formData.hobbies.map((h, i) => (
-                                        <span key={`hobby-${i}-${h}`} className="bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full text-sm text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">{h}</span>
+                                        <span key={`hobby-${i}-${h}`} className="bg-slate-100 px-3 py-1 rounded-full text-sm text-slate-600 border border-slate-200">{h}</span>
                                     ))}
                                 </div>
                             </div>
 
                             {/* About Yourself */}
                             <div>
-                                <label className="text-sm text-slate-500 dark:text-slate-400 mb-1 block">{t('onboard_about')}</label>
+                                <label className="text-sm text-slate-500 mb-1 block">{t('onboard_about')}</label>
                                 <textarea
                                     placeholder={t('onboard_about_placeholder') as string}
                                     value={formData.bio}
                                     onChange={e => setFormData({ ...formData, bio: e.target.value })}
                                     rows={3}
                                     maxLength={200}
-                                    className="w-full bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 rounded-2xl p-4 outline-none focus:border-current shadow-sm resize-none"
+                                    className="w-full bg-white border-2 border-slate-100 text-slate-800 placeholder-slate-400 rounded-2xl p-4 outline-none focus:border-current shadow-sm resize-none"
                                     style={{ borderColor: gender === 'female' ? '#fce7f3' : '#cffafe' }}
                                 />
                                 <p className="text-xs text-slate-400 text-right">{formData.bio.length}/200</p>
@@ -653,12 +653,12 @@ export const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete, init
 
                             {/* Social Media (Private - Only visible to partner) */}
                             <div>
-                                <label className="text-sm text-slate-500 dark:text-slate-400 mb-1 block">{t('onboard_social_label')} <span className="text-red-400">*</span> {t('onboard_social_required')}</label>
+                                <label className="text-sm text-slate-500 mb-1 block">{t('onboard_social_label')} <span className="text-red-400">*</span> {t('onboard_social_required')}</label>
                                 <div className="flex flex-col sm:flex-row gap-2 mb-2">
                                     <select
                                         value={socialInput.platform}
                                         onChange={e => setSocialInput({ ...socialInput, platform: e.target.value })}
-                                        className="w-full sm:w-auto bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 text-slate-800 dark:text-slate-100 rounded-2xl p-4 outline-none focus:border-current shadow-sm"
+                                        className="w-full sm:w-auto bg-white border-2 border-slate-100 text-slate-800 rounded-2xl p-4 outline-none focus:border-current shadow-sm"
                                         style={{ borderColor: gender === 'female' ? '#fce7f3' : '#cffafe' }}
                                     >
                                         <option value="WhatsApp">WhatsApp</option>
@@ -671,14 +671,14 @@ export const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete, init
                                         placeholder={t('onboard_social_placeholder') as string}
                                         value={socialInput.handle}
                                         onChange={e => setSocialInput({ ...socialInput, handle: e.target.value })}
-                                        className="flex-1 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 rounded-2xl p-4 outline-none focus:border-current shadow-sm"
+                                        className="flex-1 bg-white border-2 border-slate-100 text-slate-800 placeholder-slate-400 rounded-2xl p-4 outline-none focus:border-current shadow-sm"
                                         style={{ borderColor: gender === 'female' ? '#fce7f3' : '#cffafe' }}
                                     />
                                     <button onClick={addSocialLink} className={`w-full sm:w-14 h-14 flex-shrink-0 rounded-2xl font-bold text-white text-2xl flex items-center justify-center transition-colors ${gender === 'female' ? 'bg-pink-400 hover:bg-pink-500' : 'bg-cyan-500 hover:bg-cyan-600'}`}>+</button>
                                 </div>
                                 <div className="flex flex-wrap gap-2">
                                     {formData.socialLinks.map((s, i) => (
-                                        <span key={`social-${i}-${s.platform}-${s.handle}`} className="bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full text-sm text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">{s.platform}: {s.handle}</span>
+                                        <span key={`social-${i}-${s.platform}-${s.handle}`} className="bg-slate-100 px-3 py-1 rounded-full text-sm text-slate-600 border border-slate-200">{s.platform}: {s.handle}</span>
                                     ))}
                                 </div>
                             </div>
@@ -690,10 +690,10 @@ export const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete, init
                                     value={formData.location.city}
                                     onChange={e => setFormData({ ...formData, location: { ...formData.location, city: e.target.value } })}
                                     onFocus={() => setIsLocationPickerOpen(true)}
-                                    className="flex-1 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 rounded-2xl p-4 outline-none focus:border-current shadow-sm"
+                                    className="flex-1 bg-white border-2 border-slate-100 text-slate-800 placeholder-slate-400 rounded-2xl p-4 outline-none focus:border-current shadow-sm"
                                     style={{ borderColor: gender === 'female' ? '#fce7f3' : '#cffafe' }}
                                 />
-                                <button onClick={detectLocation} disabled={isDetectingLocation} className="bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 px-4 sm:px-5 rounded-2xl text-slate-400 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+                                <button onClick={detectLocation} disabled={isDetectingLocation} className="bg-white border-2 border-slate-100 px-4 sm:px-5 rounded-2xl text-slate-400 hover:bg-slate-50 transition-colors">
                                     {isDetectingLocation ? <div className="animate-spin">↻</div> : <MapPin size={24} />}
                                 </button>
                             </div>
@@ -707,7 +707,7 @@ export const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete, init
 
                             <label className="flex items-center gap-3 mt-4 cursor-pointer group justify-center">
                                 <input type="checkbox" checked={formData.termsAccepted} onChange={e => setFormData({ ...formData, termsAccepted: e.target.checked })} className="w-5 h-5 rounded border-slate-300 text-emerald-500 focus:ring-emerald-200" />
-                                <span className="text-slate-500 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-200">{t('onboard_terms')}</span>
+                                <span className="text-slate-500 group-hover:text-slate-700">{t('onboard_terms')}</span>
                             </label>
                         </div>
 
@@ -800,7 +800,7 @@ export const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete, init
             {/* Next Button (For non-form pages) */}
             {step < 5 && (
                 <div className="absolute bottom-10 right-6 z-50">
-                    <button onClick={next} aria-label="Next step" className="p-4 rounded-full bg-white/50 dark:bg-slate-800/50 hover:bg-white/80 dark:hover:bg-slate-800/80 backdrop-blur-md shadow-lg transition-all text-slate-700 dark:text-slate-100 rtl:rotate-180">
+                    <button onClick={next} aria-label="Next step" className="p-4 rounded-full bg-white/50 hover:bg-white/80 backdrop-blur-md shadow-lg transition-all text-slate-700">
                         <ChevronRight size={24} />
                     </button>
                 </div>
@@ -810,14 +810,14 @@ export const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete, init
             {step > 0 && step !== 10 && (
                 <button
                     onClick={() => setStep(s => s - 1)}
-                    className="absolute top-6 left-6 rtl:left-auto rtl:right-6 p-2 rounded-full text-slate-400 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-700 dark:hover:text-slate-100 transition-colors z-50"
+                    className="absolute top-6 left-6 p-2 rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition-colors z-50"
                 >
                     <ArrowRight className="rotate-180" size={24} />
                 </button>
             )}
 
             {/* Progress Bar */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-slate-100 dark:bg-slate-800">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-slate-100">
                 <motion.div
                     className={`h-full ${gender === 'female' ? 'bg-pink-400' : gender === 'male' ? 'bg-cyan-500' : 'bg-emerald-500'}`}
                     animate={{ width: `${((step + 1) / 11) * 100}%` }}
