@@ -1,0 +1,26 @@
+{
+  "project": "khalili (dhikra codebase)",
+  "branch": "khalili-remaster",
+  "total": 18,
+  "fixed": 17,
+  "bugs": [
+    {"id":"C1","severity":"high","desc":"Favicon missing","status":"fixed"},
+    {"id":"C2","severity":"high","desc":"No PWA manifest/meta tags","status":"fixed"},
+    {"id":"C3","severity":"high","desc":"Dead import map","status":"fixed"},
+    {"id":"C4","severity":"high","desc":"No PWA plugin","status":"fixed"},
+    {"id":"C5","severity":"high","desc":"8.3 MB single bundle","status":"fixed"},
+    {"id":"C6","severity":"high","desc":"localStorage try/catch","status":"fixed"},
+    {"id":"C7","severity":"high","desc":"4 alert/confirm/prompt","status":"fixed"},
+    {"id":"C8","severity":"medium","desc":"32 as any casts","status":"fixed"},
+    {"id":"C9","severity":"medium","desc":"50 console.log","status":"fixed"},
+    {"id":"C10","severity":"medium","desc":"array-index keys","status":"fixed"},
+    {"id":"C11","severity":"medium","desc":"No strict:true","status":"fixed"},
+    {"id":"C12","severity":"medium","desc":"@/* alias","status":"fixed"},
+    {"id":"C13","severity":"low","desc":"Unused dep react-is","status":"fixed"},
+    {"id":"C14","severity":"low","desc":"plugin-react wrong deps","status":"fixed"},
+    {"id":"C15","severity":"low","desc":"Unused import ArrowLeft","status":"fixed"},
+    {"id":"C16","severity":"low","desc":"Unused import deleteDoc","status":"fixed"},
+    {"id":"C17","severity":"info","desc":"Missing Google Font links","status":"open"},
+    {"id":"C18","severity":"info","desc":"metadata.json name","status":"fixed"}
+  ]
+}

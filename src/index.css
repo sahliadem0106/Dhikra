@@ -1,0 +1,402 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Safe area fallback: ensures status bar clearance even on devices that don't report env() */
+    --app-safe-top: max(env(safe-area-inset-top, 0px), 20px);
+
+    /* =====================================================
+       ROYAL NATURE PALETTE - RGB Channels for Opacity Support
+       =====================================================
+       
+       HOW TO USE: These CSS variables are used with Tailwind's opacity syntax:
+       - bg-brand-primary     → Uses --color-primary
+       - text-brand-secondary → Uses --color-secondary
+       
+       Example usage in JSX:
+       - <button className="bg-brand-primary text-white">Submit</button>
+       - <span className="text-brand-secondary">Subtitle text</span>
+    */
+
+    /* ----- CORE BRAND COLORS ----- */
+
+    /* Primary: Main brand emerald green
+       USED IN: Prayer card accents, buttons, active states, streaks
+       EXAMPLE: "Log Prayer" button, prayer status bars, nav icons */
+    --color-primary: 4 120 87;
+    /* Emerald 700 - #047857 */
+
+    /* Primary Dark: Deeper green for hover/pressed states
+       USED IN: Button hover states, gradients
+       EXAMPLE: "Log Prayer" button on hover */
+    --color-primary-dark: 6 78 59;
+    /* Emerald 900 - #064E3B */
+
+    /* Secondary: Golden amber for accents
+       USED IN: Streaks, highlights, badges, stars, special emphasis
+       EXAMPLE: Flame icon for streaks, daily reminder label */
+    --color-secondary: 217 119 6;
+    /* Amber 600 - #D97706 */
+
+    /* Secondary Dark: Deeper amber
+       USED IN: Hover states on amber elements */
+    --color-secondary-dark: 180 83 9;
+    /* Amber 700 - #B45309 */
+
+    /* ----- BACKGROUND COLORS ----- */
+
+    /* App Background: Custom user-provided #D8F2D9 (rgb(216, 242, 217))
+       USED IN: Main page background
+       EXAMPLE: The whole app body background */
+    --bg-app: 216 242 217;
+    /* Soft custom green - #d8f2d9 */
+
+    /* Surface: White cards and panels
+       USED IN: All cards, modals, panels
+       EXAMPLE: Prayer card, analytics cards, settings panels */
+    --bg-surface: 255 255 255;
+    /* Pure White - #FFFFFF */
+
+    /* Subtle: Light gray for input fields, secondary surfaces
+       USED IN: Input backgrounds, inactive tabs
+       EXAMPLE: Search input background, form fields */
+    --bg-subtle: 248 250 252;
+    /* Slate 50 - #F8FAFC */
+
+    /* ----- TEXT COLORS ----- */
+
+    /* Primary Text: Deep charcoal-emerald for lower eye strain
+       USED IN: All main headings, body text, important labels
+       EXAMPLE: Prayer names, section titles, buttons */
+    --text-primary: 26 47 42;
+    /* Charcoal Emerald - #1A2F2A */
+
+    /* Secondary Text: Medium green for subtitles
+       USED IN: Subtitles, secondary labels
+       EXAMPLE: Prayer times, streak counts */
+    --text-secondary: 6 95 70;
+    /* Emerald 800 - #065F46 */
+
+    /* Muted Text: Gray for less important text
+       USED IN: Placeholders, hints, timestamps
+       EXAMPLE: "Select location", disabled text */
+    --text-muted: 100 116 139;
+    /* Slate 500 - #64748B */
+
+    /* Inverse Text: White text on dark backgrounds
+       USED IN: Button text on colored backgrounds
+       EXAMPLE: "Log Prayer" button text */
+    --text-inverse: 255 255 255;
+    /* White - #FFFFFF */
+
+    /* ----- BORDER COLORS ----- */
+
+    /* Subtle Border: Light gray for card borders
+       USED IN: Card edges, dividers
+       EXAMPLE: Prayer card border, horizontal rules */
+    --border-subtle: 226 232 240;
+    /* Slate 200 - #E2E8F0 */
+
+    /* Highlight Border: Green tint for active/focus states
+       USED IN: Focus rings, active card borders
+       EXAMPLE: Selected prayer, focused input */
+    --border-highlight: 167 243 208;
+    /* Emerald 200 - #A7F3D0 */
+
+    /* ----- ACCENT / TINT COLORS (used across many components) ----- */
+    --color-teal: 13 148 136;
+    /* Teal 600 - hover/gradient companion to primary */
+    --color-mint: 209 250 229;
+    /* Emerald 100 - subtle green surface tint */
+    --color-sand: 245 243 233;
+    /* Warm sand - neutral subtle surface */
+    --color-gold: 217 119 6;
+    /* Amber 600 - gold accents */
+    --color-accent: 217 119 6;
+    /* Amber 600 - secondary accent */
+  }
+
+  /* Dark Mode */
+  .dark {
+    /* Shadow Dark Backgrounds (Neutral Gray/Black) */
+    --bg-app: 10 10 10;
+    /* Neutral 950 */
+    --bg-surface: 23 23 23;
+    /* Neutral 900 */
+    --bg-subtle: 38 38 38;
+    /* Neutral 800 */
+
+    /* Text Colors (White & Light Green) */
+    --text-primary: 255 255 255;
+    /* Pure White */
+    --text-secondary: 110 231 183;
+    /* Emerald 300 (Light Green) */
+    --text-muted: 156 163 175;
+    /* Gray 400 */
+    --text-inverse: 10 10 10;
+    /* Dark Text for inverse backgrounds */
+
+    /* Borders */
+    --border-subtle: 64 64 64;
+    /* Neutral 700 */
+    --border-highlight: 110 231 183;
+    /* Emerald 300 */
+
+    /* Accent / tint colors tuned for dark surfaces */
+    --color-teal: 45 212 191;
+    /* Teal 400 - brighter for dark backgrounds */
+    --color-mint: 6 78 59;
+    /* Emerald 900 - dark green surface tint */
+    --color-sand: 38 38 38;
+    /* Neutral 800 - dark neutral surface */
+    --color-gold: 251 191 36;
+    /* Amber 400 - brighter gold for dark */
+    --color-accent: 251 191 36;
+    /* Amber 400 */
+  }
+}
+
+body {
+  background-color: rgb(var(--bg-app));
+  color: rgb(var(--text-primary));
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+html,
+body,
+#root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+video,
+canvas {
+  max-width: 100%;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(4, 120, 87, 0.2);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(4, 120, 87, 0.4);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Global keyboard-open behaviors for mobile webviews */
+body.keyboard-open #bottom-nav,
+body.keyboard-open .keyboard-hide-on-open {
+  transform: translateY(150%) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: transform 0.15s ease-out, opacity 0.15s ease-out !important;
+  visibility: hidden !important;
+}
+
+/* Ensure fixed/absolute positioned bottom elements don't jump with virtual keyboard */
+body.keyboard-open {
+  /* Prevent the body from resizing when keyboard opens on some Android WebViews */
+  height: 100vh !important;
+  overflow: hidden !important;
+}
+
+/* Quran Text Justification */
+.quran-justify {
+  text-align: justify;
+  text-align-last: center;
+  -moz-text-align-last: center;
+}
+
+/* Safe Areas */
+.pb-safe-area {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.pt-safe-top {
+  padding-top: var(--app-safe-top, env(safe-area-inset-top, 20px));
+}
+
+/* GPU acceleration for smooth animations */
+.gpu-accelerated {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+@layer components {
+  /* --- PREMIUM COMPONENT SYSTEM (SANCTUARY THEME) --- */
+
+  /* 1. BUTTONS */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-2xl font-medium transition-all duration-300 active:scale-95 disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-primary {
+    @apply bg-brand-primary text-white shadow-primary hover:bg-brand-primary-dark hover:shadow-primary-lg;
+  }
+
+  .btn-secondary {
+    @apply bg-brand-surface text-brand-primary border border-brand-primary/20 hover:bg-brand-subtle;
+  }
+
+  .btn-ghost {
+    @apply text-brand-secondary hover:bg-brand-primary/5;
+  }
+
+  .btn-icon {
+    @apply p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors;
+  }
+
+  /* 2. CARDS */
+  .card-premium {
+    @apply bg-brand-surface rounded-3xl shadow-soft-xl border border-black/5 backdrop-blur-sm overflow-hidden transition-all duration-300;
+    -webkit-transform: translateZ(0);
+  }
+
+  /* 3. INPUTS */
+  .input-premium {
+    @apply w-full bg-brand-subtle border border-brand-border rounded-xl px-4 py-3 text-brand-primary placeholder:text-brand-muted focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all;
+  }
+
+  /* 4. TYPOGRAPHY UTILITIES */
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-secondary to-yellow-500;
+  }
+
+  /* 5. ANIMATION UTILITIES */
+  .animate-enter {
+    @apply animate-in fade-in zoom-in-95 duration-300 ease-out;
+  }
+
+  /* 6. 3D DEPTH & PREMIUM EFFECTS */
+  .card-3d {
+    @apply relative bg-brand-surface rounded-3xl border border-black/5 shadow-soft-xl;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-transform: translateZ(0);
+  }
+
+  .card-3d:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 10px 15px -3px rgba(0, 0, 0, 0.08),
+      0 20px 25px -5px rgba(0, 0, 0, 0.05),
+      0 25px 50px -12px rgba(0, 0, 0, 0.08);
+  }
+
+  .card-elevated {
+    @apply bg-brand-surface rounded-3xl shadow-soft-xl;
+  }
+
+  .glass-premium {
+    @apply backdrop-blur-xl border border-white/20 bg-brand-surface/80 rounded-3xl shadow-soft-xl transition-all duration-300;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.08),
+      0 20px 40px -15px rgba(4, 120, 87, 0.05),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  }
+
+  .skeleton-premium {
+    @apply relative overflow-hidden bg-brand-surface;
+  }
+
+  .skeleton-premium::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg,
+        rgba(4, 120, 87, 0) 0%,
+        rgba(4, 120, 87, 0.05) 20%,
+        rgba(255, 255, 240, 0.4) 50%,
+        rgba(4, 120, 87, 0.05) 80%,
+        rgba(4, 120, 87, 0) 100%);
+    animation: shimmer 2.5s infinite;
+  }
+
+  .depth-1 {
+    box-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+  }
+
+  .depth-2 {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 6px 10px -2px rgba(0, 0, 0, 0.04);
+  }
+
+  .depth-3 {
+    box-shadow: 0 8px 12px -2px rgba(0, 0, 0, 0.08), 0 12px 20px -4px rgba(0, 0, 0, 0.06);
+  }
+
+  .btn-3d {
+    @apply relative overflow-hidden;
+    box-shadow:
+      0 4px 0 rgba(0, 0, 0, 0.1),
+      0 6px 10px -2px rgba(0, 0, 0, 0.1);
+    transition: all 0.15s ease;
+  }
+
+  .btn-3d:active {
+    transform: translateY(2px);
+    box-shadow:
+      0 2px 0 rgba(0, 0, 0, 0.1),
+      0 3px 5px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Smooth ring transition for Tasbih */
+  .tasbih-ring {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .animate-gradient {
+    animation: gradient 3s ease infinite;
+    background-size: 200% auto;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
